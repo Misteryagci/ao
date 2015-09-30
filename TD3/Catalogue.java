@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class Catalogue {
 
 	private ArrayList<Produit> product_list;
@@ -49,7 +53,7 @@ public class Catalogue {
 	{
 		Produit p = null;
 		int res = 0;
-		Strins s = "";
+		String s = "";
 		for (int i=0;i<product_list.size();i++)
 		{
 			if (product_list.get(i).getNom().equals(name))
@@ -77,7 +81,7 @@ public class Catalogue {
 	{
 		Produit p = null;
 		int res = 0;
-		Strins s = "";
+		String s = "";
 		for (int i=0;i<product_list.size();i++)
 		{
 			if (product_list.get(i).getDescription().equals(desc))
@@ -105,7 +109,7 @@ public class Catalogue {
 	{
 		Produit p = null;
 		int res = 0;
-		Strins s = "";
+		String s = "";
 		for (int i=0;i<product_list.size();i++)
 		{
 			if (product_list.get(i).getType().equals(type))
@@ -133,7 +137,7 @@ public class Catalogue {
 	{
 		Produit p = null;
 		int res = 0;
-		Strins s = "";
+		String s = "";
 		for (int i=0;i<product_list.size();i++)
 		{
 			if ((product_list.get(i).getPrix()>=min) &&
@@ -158,15 +162,61 @@ public class Catalogue {
 
 	//Méthodes de classement
 
+	//Méthode permet de classer les produits par leur prix en ordre croissant
+	public void classerCroissantPrix()
+	{
+		Collections.sort(product_list, new Comparator<Produit>() {
+        	@Override 
+        	public int compare(Produit p1, Produit p2) {
+            	return (int)(p1.getPrix() - p2.getPrix());
+        	}
+    	});
+	}
+	//Méthode permet de classer les produits par leur prix en ordre decroissant
+	public void classerDecroissantPrix()
+	{
+		Collections.sort(product_list, new Comparator<Produit>() {
+        	@Override 
+        	public int compare(Produit p1, Produit p2) {
+            	return (int)(p2.getPrix() - p1.getPrix());
+        	}
+    	});
+	}
+	//Méthode permet de classer les produits par leur nom à l'ordre alphabétique
+	public void sortByName()
+	{
+			Collections.sort(product_list, new Comparator<Produit>() {
+        		@Override 
+        		public int compare(Produit p1, Produit p2) {
+            		return p1.getNom().compareTo(p2.getNom());
+        		}
+    	});
+	}
+	//Méthode permet de classer les produits par leur type à l'ordre alphabétique
+	public void sortByType()
+	{
+			Collections.sort(product_list, new Comparator<Produit>() {
+        		@Override 
+        		public int compare(Produit p1, Produit p2) {
+            		return p1.getType().compareTo(p2.getType());
+        		}
+    	});
+	}
 
 	//Fin des méthodes de classement
+
+	//Méthode qui supprime un Produit de catalogue
+	public boolean supprimer(Produit p)
+	{
+		return product_list.remove(p);
+	}
 
 	//Méthodes privées à l'objet
 	private boolean existe(Produit p)
 	{
 		for (int i=0;i<product_list.size();i++)
 		{
-			if (product_list.get(i).equals(p))
+			if (product_list.get(i).equals(p) == 1)
 				return true;
 		}
 		return false;

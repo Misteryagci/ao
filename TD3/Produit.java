@@ -56,7 +56,7 @@ public class Produit {
 			Return 1 si les objets sont identiques
 			Return 0 si les objets ne sont pas identiques
 	*/
-	@Override
+
 	public int equals (Produit p)
 	{
 		if ( (this.nom.equals(p.getNom())) &&
