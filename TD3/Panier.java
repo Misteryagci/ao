@@ -1,44 +1,44 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Panier {
-	ArrayList<Produit> content;
-
+	//ArrayList<Produit> content;
+	HashMap<Produit,Integer> content;
 	//Les constructeurs
 
 	//Constructeur par défaut
 	public Panier ()
 	{
-		content =  new ArrayList<Produit>();
+		content =  new HashMap<Produit,Integer>();
 	}
 	//Constructeur par une autre liste des produits
-	public Panier (ArrayList<Produit> al)
+	public Panier (HashMap<Produit,Integer> al)
 	{
 		this.content = al;
 	}
 
 	//Fin des constructeurs
 
-	//Méthode permet d'ajouter un produit à panier, on ne vérifie pas l'existance de ce produit parce qu'il peut contenir plusieurs fois de même produit
+	//Méthode permet d'ajouter un produit à panier
 	public void add(Produit p)
 	{
-		content.add(p);
+		if (content.get(p) == null)
+			content.put(p,1);
+		else
+			content.put(p,content.get(p)+1);
 	}
 	//Méthode permet d'ajouter  un élément au panier un nombre de fois
 	public void add(Produit p,int fois)
 	{
-		for (int i=0;i<fois;i++)
-		{
-			content.add(p);
-		}
+		content.put(p,fois);
 	}
 
 	//Fonction retourne le prix total du panier
 	public double prixTotal()
 	{
 		double res = 0;
-		for (int i=0;i<content.size();i++)
+		for (Produit p : content.keySet())
 		{
-			res+=content.get(i).getPrix();
+			res+=(p.getPrix() * content.get(p));
 		}
 		return res;
 	}
@@ -46,23 +46,19 @@ public class Panier {
 	//Méthode renvoie le nombre d'apparation d'un produit dans le panier
 	public int quantite(Produit p)
 	{
-		int res = 0;
-		for (int i=0;i<content.size();i++)
-		{
-			if (content.get(i).equals(p) == 1)
-				res++;
-		}
-		return res;
+		if (content.get(p) == null)
+			return 0;
+		return content.get(p);
 	}
 
 	//Méthode permet d'afficher les produits dans le panier
 	public void afficher()
 	{
-		System.out.println("Nombre d'éléments dans votre panier est "+content.size());
-		for (int i=0;i<content.size();i++)
+		for (Produit p : content.keySet())
 		{
-			System.out.println("Produit numéro "+(i+1)); //Pour séparer les produits
-			System.out.print(content.get(i).toString());
+			System.out.println(p.toString());
+			System.out.println("Existe "+content.get(p)+" "+p.getType());
 		}
 	}
+
 }

@@ -4,6 +4,7 @@ public class Produit {
 	private String description;
 	private String type_produit;
 	private double prix; //Prix en euro
+	private int hash;  
 
 	//Constructeur
 	public Produit (String name,String desc,String type,double prix)
@@ -12,6 +13,8 @@ public class Produit {
 		this.description = desc;
 		this.type_produit = type;
 		this.prix = prix;
+		hash = this.nom.hashCode()+this.description.hashCode()+
+				this.type_produit.hashCode()+(""+this.prix).hashCode();
 	}
 
 
@@ -56,19 +59,24 @@ public class Produit {
 			Return 1 si les objets sont identiques
 			Return 0 si les objets ne sont pas identiques
 	*/
-
-	public int equals (Produit p)
+@Override
+	public boolean equals (Object p)
 	{
-		if ( (this.nom.equals(p.getNom())) &&
-			 (this.description.equals(p.getDescription())) &&
-			 (this.type_produit.equals(p.getType())) &&
-			 (this.prix == p.getPrix())
+		if (!(p instanceof Produit))
+			return false;
+		if ((this.nom.equals(((Produit)p).getNom())) &&
+			 (this.description.equals(((Produit)p).getDescription())) &&
+			 (this.type_produit.equals(((Produit)p).getType())) &&
+			 (this.prix == ((Produit)p).getPrix())
 			)
-			return 1;
-		else
-			return 0;
+			return true;
+		return false;
 	}
 
+	@Override
+	public int hashCode(){
+		return hash;
+	}
 	@Override
 	public String toString ()
 	{

@@ -27,7 +27,7 @@ public class Main {
 		Panier panier = new Panier();
 		System.out.println("Ajout des produits dans le panier");
 		panier.add(p1,6);
-
+		
 		panier.add(p2);
 		panier.add(p2);
 		panier.add(p2);

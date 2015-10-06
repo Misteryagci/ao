@@ -216,7 +216,7 @@ public class Catalogue {
 	{
 		for (int i=0;i<product_list.size();i++)
 		{
-			if (product_list.get(i).equals(p) == 1)
+			if (product_list.get(i).equals(p))
 				return true;
 		}
 		return false;
