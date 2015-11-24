@@ -4,7 +4,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Catalogue {
+import td3_4.structures.interfaces.CatalogueAdminItf;
+import td3_4.structures.interfaces.CatalogueUserItf;
+
+public class Catalogue implements CatalogueUserItf, CatalogueAdminItf {
 
 	private ArrayList<Produit> product_list;
 	public Catalogue() {

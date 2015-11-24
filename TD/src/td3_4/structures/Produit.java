@@ -2,7 +2,7 @@ package td3_4.structures;
 
 import tools.Functions;
 
-public class Produit implements Comparable<Produit> {
+public abstract class Produit implements Comparable<Produit> {
 
 	private String name;
 	private String description;
