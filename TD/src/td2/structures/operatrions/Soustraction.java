@@ -1,6 +1,6 @@
 package td2.structures.operatrions;
 
-import td2.structure.operateurs.OperateurBinaire;
+import td2.structures.operateurs.OperateurBinaire;
 
 public class Soustraction extends OperateurBinaire{
 
