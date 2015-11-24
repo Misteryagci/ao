@@ -34,7 +34,7 @@ public class SommeFrame {
 		button.addActionListener(new ActionListener() 
 		{ 
 			  public void actionPerformed(ActionEvent e) 
-			  { 
+			  { 				  	
 				    if ((((op1.getText().length() == 0) || (op2.getText().length() == 0))) && (somme.getText().length() != 0))
 				    {
 				    	if ((op1.getText().length() == 0) && (op2.getText().length() == 0))
@@ -97,8 +97,4 @@ public class SommeFrame {
 		this.frame.setVisible(true);
 	}
 	
-	public static void main (String[] args)
-	{
-		SommeFrame sf = new SommeFrame();
-	}
 }
