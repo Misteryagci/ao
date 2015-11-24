@@ -1,0 +1,123 @@
+package exam;
+
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class SwissArmyKnife {
+	private JFrame frame;
+	private JLabel label;
+	private JLabel label2;
+	private JButton button;
+	private int x;
+	private int currentMax;
+	private int overallMax;
+	private boolean accessed[];
+	private String word = new String("Gang.Of.Four!");
+	private ActionListener actionListener;
+
+	public void generateNewCurrentMax() {
+		this.currentMax = ((int) (Math.random() * this.overallMax) + 1);
+	}
+
+	public SwissArmyKnife(int overallMax) {
+		this.overallMax = overallMax;
+		this.accessed = new boolean[overallMax];
+		this.x = 0;
+		generateNewCurrentMax();
+		frame = new JFrame("View");
+		frame.getContentPane().setLayout(new BorderLayout());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(200, 100);
+
+		label2 = new JLabel();
+		label2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+		frame.getContentPane().add(label2, BorderLayout.NORTH);
+		label = new JLabel();
+		label.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+		frame.getContentPane().add(label, BorderLayout.CENTER);
+
+		button = new JButton("Button");
+		frame.getContentPane().add(button, BorderLayout.SOUTH);
+		setText(getStringRepresentation());
+		setText2(getResultRepresentation());
+		actionListener = new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				process();
+				setText(getStringRepresentation());
+				setText2(getResultRepresentation());
+			}
+		};
+		button.addActionListener(actionListener);
+		frame.setVisible(true);
+	}
+
+	public void setText(String text) {
+		label.setText(text);
+	}
+
+	public void setText2(String text) {
+		label2.setText(text);
+	}
+
+	private boolean allDone() {
+		for (boolean b : accessed) {
+			if (!b)
+				return false;
+		}
+		return true;
+	}
+
+	public void process() {
+		if (x < currentMax)
+			x++;
+		else {
+			accessed[currentMax - 1] = true;
+			if (allDone()) {
+				accessed = new boolean[overallMax];
+			}
+			generateNewCurrentMax();
+			x = 0;
+		}
+	}
+
+	public String getStringRepresentation() {
+		String txt = ">";
+		for (int i = 0; i < x; i++) {
+			txt += word.charAt(i % (word.length()));
+		}
+		for (int i = x; i < currentMax; i++) {
+			txt += " ";
+		}
+		txt += "|";
+		for (int i = currentMax + 1; i <= overallMax; i++) {
+			txt += " ";
+		}
+		txt += "<";
+		return txt;
+	}
+
+	public String getResultRepresentation() {
+		String txt = ">";
+		int i = 0;
+		for (boolean b : accessed) {
+			if (b)
+				txt += word.charAt(i % (word.length()));
+			else
+				txt += " ";
+			i++;
+		}
+		txt += "<";
+		return txt;
+	}
+
+	public static void main(String[] args) {
+		new SwissArmyKnife(10);
+	}
+
+}

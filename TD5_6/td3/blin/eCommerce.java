@@ -38,7 +38,7 @@ public class eCommerce {
     	panel03 = new JPanel();
     	panel2 = new JPanel();
     	panel3 = new JPanel();
-    	panel2.setLayout(new BoxLayout(panel2, BoxLayout.PAGE_AXIS));
+    	panel2.setLayout(new BorderLayout());
 
     	l1 = new JLabel("The Livre");
     	l3 = new JLabel("The CD");
@@ -70,8 +70,8 @@ public class eCommerce {
     	panel.add(panel02);
     	panel.add(panel03);
     	panel.add(button);
-    	panel2.add(catalogue);	
-    	panel2.add(button1);	
+    	panel2.add(catalogue,BorderLayout.WEST);	
+    	panel2.add(button1,BorderLayout.SOUTH);	
     	//Ajout de panel à fenetre
 
     	tabbedpane.addTab("Panier",panel);

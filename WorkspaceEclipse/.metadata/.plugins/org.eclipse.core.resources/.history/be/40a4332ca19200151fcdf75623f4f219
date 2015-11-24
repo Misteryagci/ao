@@ -1,0 +1,11 @@
+package exam;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public interface UI {
+	void drawInterface();
+	void setText(String text);
+	
+}

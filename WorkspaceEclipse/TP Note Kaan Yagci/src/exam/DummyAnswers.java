@@ -1,0 +1,26 @@
+package exam;
+
+/*On change la visibilité de la classe en package */
+ class DummyAnswers {
+	private String trueAnswer;
+	private String studentAnswer;
+	public DummyAnswers(String trueAnswer, String studentAnswer) {
+		super();
+		this.trueAnswer = trueAnswer;
+		this.studentAnswer = studentAnswer;
+	}
+	public String getTrueAnswer() {
+		return trueAnswer;
+	}
+	public void setTrueAnswer(String trueAnswer) {
+		this.trueAnswer = trueAnswer;
+	}
+	public String getStudentAnswer() {
+		return studentAnswer;
+	}
+	public void setStudentAnswer(String studentAnswer) {
+		this.studentAnswer = studentAnswer;
+	}
+
+	
+}

@@ -1,0 +1,11 @@
+package exam;
+
+public class MainDummyExam {
+	public static void main(String[] args) {
+		DummyExam exam = new DummyExam();
+		ArrayList<DummyQuestion> questions = exam.getQuestions();
+		exam.answer();
+		exam.computeGoodAnswers();
+		System.out.println("You answered " + exam.getMark() + " good answers!");
+	}
+}

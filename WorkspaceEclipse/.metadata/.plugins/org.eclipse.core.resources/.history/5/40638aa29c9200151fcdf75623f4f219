@@ -1,0 +1,14 @@
+package exam;
+
+import java.util.ArrayList;
+
+public class MainDummyExam {
+	public static void main(String[] args) {
+		DummyExam exam = new DummyExam();
+		ArrayList<DummyQuestion> questions = exam.getQuestions(); //Ob obtient les questions de l'examen
+		
+		exam.answer();
+		exam.computeGoodAnswers();
+		System.out.println("You answered " + exam.getMark() + " good answers!");
+	}
+}

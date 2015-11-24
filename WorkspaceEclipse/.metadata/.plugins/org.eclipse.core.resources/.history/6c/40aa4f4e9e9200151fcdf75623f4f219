@@ -1,0 +1,15 @@
+package exam;
+
+import java.util.ArrayList;
+
+public class MainDummyExam {
+	public static void main(String[] args) {
+		DummyExam exam = new DummyExam();
+		//ArrayList<DummyQuestion> questions = exam.getQuestions(); //On obtient les questions de l'examen
+		
+		exam.answer();
+		//exam.goodAnswers = questions.size(); //Après avoir répondu tous les questions de l'exam il suffit de changer le nombre des bonnes réponses avec le nombre des questions dans l'exam
+		
+		System.out.println("You answered " + exam.finish() + " good answers!");
+	}
+}

@@ -1,0 +1,6 @@
+package exam;
+
+public class Student {
+
+	//La classe Student représente un(e) étudiant(e)
+}

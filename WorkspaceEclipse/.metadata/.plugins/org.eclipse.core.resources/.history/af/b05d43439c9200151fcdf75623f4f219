@@ -1,0 +1,10 @@
+package exam;
+
+public class MainDummyExam {
+	public static void main(String[] args) {
+		DummyExam exam = new DummyExam();
+		exam.answer();
+		exam.computeGoodAnswers();
+		System.out.println("You answered " + exam.getMark() + " good answers!");
+	}
+}
